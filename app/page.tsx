@@ -26,59 +26,63 @@ export default function Home() {
           <Hero />
 
         <section
-          className="flex justify-center items-center flex-col min-h-screen w-full mt-20 mb-20"
+          className="flex justify-center items-center flex-col min-h-screen w-full mt-20 mb-20 relative"
           style={{
             backgroundImage: "url('/assets/bg2.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         >
+          {/* Dark background overlay */}
+          <div className="absolute inset-0 bg-black/60 pointer-events-none z-0" />
+          
             {/* Body Section */}
-            <ScrollFloat
-          animationDuration={5}
-          ease='back.inOut(2)'
-          scrollStart='top bottom+=50%'
-          scrollEnd='bottom bottom-=40%'
-          stagger={0.06}
+            <div className="relative z-10 flex flex-col items-center w-full">
+              <ScrollFloat
+                animationDuration={5}
+                ease='back.inOut(2)'
+                scrollStart='top bottom+=50%'
+                scrollEnd='bottom bottom-=40%'
+                stagger={0.06}
               >
-          My Projects
+                My Projects
               </ScrollFloat>
               
               {/* <SplashCursor /> */}
 
               {/* <MagicBento 
-          textAutoHide={true}
-          enableStars={true}
-          enableSpotlight={true}
-          enableBorderGlow={true}
-          enableTilt={true}
-          enableMagnetism={true}
-          clickEffect={true}
-          spotlightRadius={300}
-          particleCount={12}
-          glowColor="132, 0, 255"
+                textAutoHide={true}
+                enableStars={true}
+                enableSpotlight={true}
+                enableBorderGlow={true}
+                enableTilt={true}
+                enableMagnetism={true}
+                clickEffect={true}
+                spotlightRadius={300}
+                particleCount={12}
+                glowColor="132, 0, 255"
               /> */}
 
-
               {/* <TiltedCard
-          imageSrc="https://i.scdn.co/image/ab67616d0000b273d9985092cd88bffd97653b58"
-          altText="Kendrick Lamar - GNX Album Cover"
-          captionText="Kendrick Lamar - GNX"
-          containerHeight="300px"
-          containerWidth="300px"
-          imageHeight="300px"
-          imageWidth="300px"
-          rotateAmplitude={12}
-          scaleOnHover={1.2}
-          showMobileWarning={false}
-          showTooltip={true}
-          displayOverlayContent={true}
-          overlayContent={
+                imageSrc="https://i.scdn.co/image/ab67616d0000b273d9985092cd88bffd97653b58"
+                altText="Kendrick Lamar - GNX Album Cover"
+                captionText="Kendrick Lamar - GNX"
+                containerHeight="300px"
+                containerWidth="300px"
+                imageHeight="300px"
+                imageWidth="300px"
+                rotateAmplitude={12}
+                scaleOnHover={1.2}
+                showMobileWarning={false}
+                showTooltip={true}
+                displayOverlayContent={true}
+                overlayContent={
             <p className="tilted-card-demo-text">
               Kendrick Lamar - GNX
             </p>
-          }
+                }
               /> */}
+          </div>
         </section>
           
       </div>          
