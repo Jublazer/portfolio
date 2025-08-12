@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useCallback, useState } from "react";
 import { gsap } from "gsap";
-import "./MagicBento.css";
+import "./styles.css";
 
 export interface BentoCardProps {
   color?: string;
@@ -604,7 +604,7 @@ const MagicBento: React.FC<BentoProps> = ({
                 clickEffect={clickEffect}
                 enableMagnetism={enableMagnetism}
               >
-                <div className="card__header">
+                <div className="card__header text-xl">
                   <div className="card__label">{card.label}</div>
                 </div>
                 <div className="card__content">

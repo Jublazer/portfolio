@@ -1,48 +1,109 @@
 "use client"
 
+import Link from "next/link";
 import Footer from "./components/Footer";
+import { Hero } from "./components/Hero";
 import Navbar from "./components/Navbar"
+import Dock from "./components/gsap/DockMenu";
+import MagicBento from "./components/gsap/MagicBento";
 import ScrollFloat from './components/gsap/ScrollFloat';
 import SplashCursor from "./components/gsap/SplashCursor";
 import StarBorder from "./components/gsap/StarBorderButton";
+import TiltedCard from "./components/gsap/TiltedCard";
+import { Circles } from "./components/ui/Circles";
+
 
 export default function Home() {
+  
   return (
     <main className="font-sans flex items-center justify-center w-full flex-col p-0 min-h-screen">
-      <div className="w-full">
+      <div className="w-full items-center justify-center mx-auto min-h-screen">
         {/* Navbar */}
         <Navbar />
+        <Hero />
+        <br />
+
+        <div className="flex justify-center items-center gap-10">
+        <Link href={'/projects'}>
+          <StarBorder
+              as="button"
+              className="custom-class cursor-pointer"
+              color="orange"
+              speed="5s"
+              >
+              View My Works
+            </StarBorder>
+          </Link>
+
+        <Link href={'/contact'}>
+          <StarBorder
+              as="button"
+              className="custom-class cursor-pointer"
+              color="cyan"
+              speed="5s"
+              >
+              Work with me
+            </StarBorder>
+          </Link>
+        </div>
         
       </div>
 
-      <div className="min-h-[100vh]">
+      <div className="min-h-screen w-full flex justify-center items-center">
         {/* Body Section */}
-        
-          <ScrollFloat
+        <ScrollFloat
             animationDuration={5}
             ease='back.inOut(2)'
-            scrollStart='center bottom+=50%'
+            scrollStart='top bottom+=50%'
             scrollEnd='bottom bottom-=40%'
-            stagger={0.03}
+            stagger={0.06}
           >
-            Promise My Love
+            My Projects
           </ScrollFloat>
-          <StarBorder
-            as="button"
-            className="custom-class cursor-pointer"
-            color="cyan"
-            speed="5s"
-          >
-            View My Works
-          </StarBorder>
+          
+          {/* <SplashCursor /> */}
 
-          <SplashCursor />
+          {/* <MagicBento 
+            textAutoHide={true}
+            enableStars={true}
+            enableSpotlight={true}
+            enableBorderGlow={true}
+            enableTilt={true}
+            enableMagnetism={true}
+            clickEffect={true}
+            spotlightRadius={300}
+            particleCount={12}
+            glowColor="132, 0, 255"
+          /> */}
+
+
+          {/* <TiltedCard
+            imageSrc="https://i.scdn.co/image/ab67616d0000b273d9985092cd88bffd97653b58"
+            altText="Kendrick Lamar - GNX Album Cover"
+            captionText="Kendrick Lamar - GNX"
+            containerHeight="300px"
+            containerWidth="300px"
+            imageHeight="300px"
+            imageWidth="300px"
+            rotateAmplitude={12}
+            scaleOnHover={1.2}
+            showMobileWarning={false}
+            showTooltip={true}
+            displayOverlayContent={true}
+            overlayContent={
+              <p className="tilted-card-demo-text">
+                Kendrick Lamar - GNX
+              </p>
+            }
+          /> */}
+          
       </div>
 
-      <div className="w-full">
+      <div className="relative w-full">
         {/* footer seciton */}
         <Footer />
       </div>
+          
     </main>
   );
 }
