@@ -14,7 +14,7 @@ function Navbar() {
   ];
 
   return (
-    <div className='container bg-white/2 w-full mt-15  p-2 flex items-center justify-space gap-5    max-w-md mx-auto rounded-lg shadow-lg border border-gray-800'>
+    <div className='container w-full mt-15  p-2 flex items-center justify-space gap-5    max-w-md mx-auto rounded-lg shadow-lg border border-gray-800'>
         <div className='flex item-center justify-start'>
             <Image
                 src={logo}

@@ -29,7 +29,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-dark text-white font-sans`}
       >
-        <div className="z-300">
+        <div className="z-300 fixed top-0 left-0 w-full h-16 bg-black/50 backdrop-blur-md">
           <Navbar />
         </div>
           {children}
