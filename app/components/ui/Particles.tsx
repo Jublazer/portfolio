@@ -17,7 +17,7 @@ export const Particles: React.FC<ParticlesProps> = ({ parallaxRef }) => {
     }, []);
 
     return(
-        <div className="absolute z-[-10] top-[-45%] left-[50%] w-[78rem] -translate-x-1/2 aspect-square">
+        <div className="absolute z-[-10] top-[-45%] left-[50%] w-full md:w-[78rem] -translate-x-1/2 aspect-square">
             <Circles />
 
             <MouseParallax strength={0.1} parallaxContainerRef={parallaxRef}>

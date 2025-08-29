@@ -5,6 +5,11 @@
   --foreground: #171717;
 }
 
+.glass{
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
