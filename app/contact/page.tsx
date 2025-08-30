@@ -5,7 +5,7 @@ import ReactDOM from "react-dom/client";
 
 function ContactForm() {
   // Replace with your actual Getform endpoint
-  const GETFORM_ENDPOINT = "https://getform.io/f/apjnolva";
+  const GETFORM_ENDPOINT = "https://formsubmit.co/gabiblazer@gmail.com";
 
   const [formData, setFormData] = useState({
     name: "",
@@ -82,7 +82,7 @@ function ContactForm() {
           </div>
         )}
 
-        <form onSubmit={handleSubmit}>
+        <form method="POST" action={"https://formsubmit.co/gabiblazer@gmail.com"} onSubmit={handleSubmit}>
           <div className="space-y-4">
             <div className="space-y-2">
               <label
@@ -140,6 +140,8 @@ function ContactForm() {
                 className="w-full px-3 py-2 bg-gray-900 border border-gray-700 text-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-white focus:border-white placeholder-gray-500"
               />
             </div>
+
+            <input type="hidden" name="_captcha" value="true" />
 
             <button
               type="submit"
