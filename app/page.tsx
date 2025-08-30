@@ -28,9 +28,9 @@ export default function Home() {
           {/* Dark background overlay */}
           <div className="absolute glass inset-0 bg-white/60 pointer-events-none z-0" />
             
-            <div className="w-full p-5 md:p-25 flex flex-col md:flex-row gap-8">
+            <div className="w-full p-5 md:p-25 flex flex-col items-center justify-center md:flex-row gap-8">
                   
-                  <div className="h-[550px] w-[400px] backdrop-blur-md bg-white/70 p-4 flex flex-col items-start justify-start rounded-4xl shadow-lg shadow-xl  mb-10">
+                  <div className="md:h-[550px] md:w-[400px] h-[500px] w-[300px] backdrop-blur-md bg-white/70 p-4 flex flex-col items-start justify-start rounded-4xl shadow-lg shadow-xl  mb-10">
                       <div className="flex flex-row items-center justify-center w-full">
                           <span className="flex block items-center justify-center p-8 rounded-full bg-gray-100 text-orange-950 text-xl">01</span> <hr className="border border-[1px] border-orange-950 mx-4 w-full" />
                       </div>
@@ -48,7 +48,7 @@ export default function Home() {
                     
                   </div>
 
-                  <div className="h-[550px] w-[400px] backdrop-blur-md bg-orange-600 p-4 flex flex-col items-start justify-start rounded-4xl shadow-lg shadow-xl  mb-10">
+                  <div className="md:h-[550px] md:w-[400px] h-[500px] w-[300px] backdrop-blur-md bg-orange-600 p-4 flex flex-col items-start justify-start rounded-4xl shadow-lg shadow-xl  mb-10">
                       <div className="flex flex-row items-center justify-center w-full">
                           <span className="flex block items-center justify-center p-8 rounded-full bg-white text-orange-950 text-xl">02</span> <hr className="border border-[1px] border-whitw-950 mx-4 w-full" />
                       </div>

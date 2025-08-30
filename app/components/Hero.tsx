@@ -11,7 +11,7 @@ import StarBorder from './gsap/StarBorderButton'
 export const Hero = ()=>{
     const parallaxRef = useRef<HTMLDivElement>(null)
     return(
-        <div className='overflow-x-clip relative mt-10 w-full min-h-[100vh] pt-12 flex items-center justify-center gap-6'>
+        <div className='overflow-x-clip relative mt-10 w-full min-h-[300px] pt-12 flex items-center justify-center gap-6'>
             <div className='container mx-auto space-y-6 flex flex-col justify-center items-center' ref={parallaxRef}>
                 <Image 
                     src={character}
