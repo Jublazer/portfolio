@@ -142,6 +142,7 @@ function ContactForm() {
             </div>
 
             <input type="hidden" name="_captcha" value="true" />
+            <input type="hidden" name="_subject" value="New Email from Your Website"></input>
 
             <button
               type="submit"
