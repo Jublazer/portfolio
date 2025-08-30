@@ -17,13 +17,13 @@ export const Hero = ()=>{
                     src={character}
                     alt='Character'
                     className='mx-auto '
-                    width={250}
+                    width={350}
                 />
                 <div className="w-full rounded-lg shadow-lg absolute mx-auto space-y-6 h-100 top-90 bg-gradient-to-t from-[#131212ff]  to-transparent">
                     
                     <div className='flex items-center justify-center flex-col space-y-2'>
 
-                            <h1 className='font-extrabold text-orange-200 text-7xl'>Lets create</h1>
+                            <h1 className='font-extrabold text-center font-semibold text-orange-200 text-7xl'>Lets create</h1>
                             <TypeAnimation 
                                 sequence={[
                                     "Experience", 1000,
@@ -38,7 +38,7 @@ export const Hero = ()=>{
                                 cursor={true}
                                 repeat={Infinity}
                             />
-                            <p className='text-orange-100 md:text-xl text-[1rem] text-center font-regular max-w-[700px] '>My name is Timothy Jonah, I am a fullstack developer with 5+years experience.</p>
+                            <p className='text-orange-100 md:text-sm text-[0.8rem] text-center font-regular max-w-[700px] '>My name is Timothy Jonah, I am a fullstack developer with 5+years experience.</p>
 
                             <br />
         

@@ -27,7 +27,8 @@ const handleNavClose = ()=>{
 }
 
   return (
-    <div className=' flex items-center justify-space backdrop-filter backdrop-blur-lg bg-opacity-10 max-w-[1300px] mt-2  p-2 gap-5 bg-white/20 mx-auto rounded-lg shadow-lg border border-gray-800'>
+    <div className=' fixed z-500 top-0 left-0 w-full' >
+      <div className='flex items-center justify-around backdrop-filter backdrop-blur-lg bg-opacity-10 max-w-[1300px] mt-2  p-2 gap-5 bg-white/20 mx-auto rounded-lg shadow-lg border border-gray-100 border-opacity-10'>  
         <div className='flex item-center justify-start'>
             <Image
                 src={logo}
@@ -63,7 +64,7 @@ const handleNavClose = ()=>{
               </div>
 
           </div>
-         
+        </div>
     </div>
   )
 }

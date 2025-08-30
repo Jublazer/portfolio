@@ -64,9 +64,8 @@ function ContactForm() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-4 md:p-24 bg-black">
-      <div className="w-full max-w-md mx-auto p-6 bg-black rounded-lg shadow-lg border border-gray-800">
-        <p className="text-center text-gray-400 mb-3">Contact us</p>
+    <main className="flex min-h-screen flex-col items-center justify-center p-4 md:p-24 mt-15 bg-black">
+      <div className="w-full glass max-w-md mx-auto p-6 bg-black rounded-lg shadow-lg border border-gray-800">
         <h2 className="text-2xl font-bold mb-6 text-center text-white">
           Contact Us
         </h2>

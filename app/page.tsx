@@ -18,7 +18,7 @@ export default function Home() {
           <Hero />
 
         <section
-          className="flex justify-center items-center flex-col min-h-screen w-full mt-20 mb-20 relative"
+          className="flex justify-center items-center flex-col min-h-screen w-full mt-20 relative rounded-lg"
           style={{
             backgroundImage: "url('/assets/bg2.jpg')",
             backgroundSize: "cover",
@@ -26,14 +26,45 @@ export default function Home() {
           }}
         >
           {/* Dark background overlay */}
-          <div className="absolute glass inset-0 bg-black/90 pointer-events-none z-0" />
-          
-            {/* Body Section */}
+          <div className="absolute glass inset-0 bg-white/60 pointer-events-none z-0" />
+            
+            <div className="w-full p-5 md:p-25 flex flex-col md:flex-row gap-8">
+                  
+                  <div className="h-[550px] w-[400px] backdrop-blur-md bg-white/70 p-4 flex flex-col items-start justify-start rounded-4xl shadow-lg shadow-xl  mb-10">
+                      <div className="flex flex-row items-center justify-center w-full">
+                          <span className="flex block items-center justify-center p-8 rounded-full bg-gray-100 text-orange-950 text-xl">01</span> <hr className="border border-[1px] border-orange-950 mx-4 w-full" />
+                      </div>
+                      <div className="flex flex-col items-start mt-5 justify-center w-full">
+                        <h2 className="text-[1.5rem] text-orange-950 font-300">Web & Mobile Development </h2>
+                        <p className="text-[0.7rem] text-gray-800/90 max-w-[700px]">Crafting seamless digital experiences across platforms </p>                
+                        
+                        <hr className="border border-[1px] border-orange-950 mx-4 w-full" />
+                        <p className="text-[0.7rem] text-gray-800/90 max-w-[700px]">From responsive websites to dynamic mobile applications, I specialize in building intuitive, high-performance solutions that meet real-world needs. My development process is rooted in clean architecture, scalable code, and a deep understanding of user behavior. Whether it's a sleek landing page or a full-stack mobile app, I bring ideas to life with precision and creativity.</p>
+                        <hr className="border border-[1px] border-orange-950 mx-4 w-full" />
+                        <p className="text-[0.7rem] text-gray-800/90 max-w-[700px]">I work with modern frameworks and tools to ensure every product is optimized for speed, accessibility, and cross-device compatibility. My goal is not just to build software—but to create experiences that engage, convert, and endure. Each project is a collaboration, where your vision meets my technical craftsmanship.</p>
+
+
+                      </div>
+                    
+                  </div>
+
+                  <div className="h-[550px] w-[400px] backdrop-blur-md bg-orange-600 p-4 flex flex-col items-start justify-start rounded-4xl shadow-lg shadow-xl  mb-10">
+                      <div className="flex flex-row items-center justify-center w-full">
+                          <span className="flex block items-center justify-center p-8 rounded-full bg-white text-orange-950 text-xl">02</span> <hr className="border border-[1px] border-whitw-950 mx-4 w-full" />
+                      </div>
+                      <div className="flex flex-col items-start mt-5 justify-center w-full">
+                        <h2 className="text-[1.5rem] text-orange-950 font-300"> UI/UX Design</h2>
+                        <p className="text-[0.7rem] text-gray-800/90 max-w-[700px]">Designing interfaces that feel as good as they look</p>
+                         <hr className="border border-[1px] border-orange-950 mx-4 w-full" />                
+                        <p className="text-[0.7rem] text-gray-800/90 max-w-[700px]">I believe great design is invisible—it guides users effortlessly while delighting them at every turn. My UI/UX approach blends aesthetics with usability, ensuring that every screen serves a purpose and every interaction feels natural. From wireframes to polished prototypes, I design with empathy and clarity.</p>                
+                      </div>
+                    
+                  </div>
+            </div>
             
         </section>
           
-      </div> 
-      <Footer />         
+      </div>       
     </main>
   );
 }
