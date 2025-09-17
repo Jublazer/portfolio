@@ -5,7 +5,7 @@ import ReactDOM from "react-dom/client";
 
 function ContactForm() {
   // Replace with your actual Getform endpoint
-  const GETFORM_ENDPOINT = "https://formsubmit.co/gabiblazer@gmail.com";
+  const GETFORM_ENDPOINT = "https://formsubmit.co/2e17edefe1a54ac395473d40fea26166";
 
   const [formData, setFormData] = useState({
     name: "",
@@ -82,7 +82,7 @@ function ContactForm() {
           </div>
         )}
 
-        <form method="POST" action={"https://formsubmit.co/gabiblazer@gmail.com"} onSubmit={handleSubmit}>
+        <form method="POST" action={"https://formsubmit.co/2e17edefe1a54ac395473d40fea26166"} onSubmit={handleSubmit}>
           <div className="space-y-4">
             <div className="space-y-2">
               <label
