@@ -28,7 +28,7 @@ const handleNavClose = ()=>{
 
   return (
     <div className=' fixed z-500 top-0 left-0 w-full justify-center items-center' >
-      <div className='flex items-center justify-around backdrop-filter max-h-[500px] backdrop-blur-lg bg-opacity-10 md:max-w-[1300px] mt-2  p-2 gap-5 bg-white/20 mx-auto rounded-lg shadow-lg border border-gray-100 border-opacity-10 '>  
+      <div className='flex items-center justify-around max-h-[500px] backdrop-blur-lg md:max-w-[1300px] mt-2  p-2 gap-5 bg-white/10 mx-auto rounded-lg shadow-lg border border-[#2f2f2f] border-opacity-10 '>  
         <div className='flex item-center justify-start'>
             <Image
                 src={logo}
@@ -55,7 +55,7 @@ const handleNavClose = ()=>{
         </div>
 
         {/* Mobile version Navbar */}
-          <div className={navBar ? "z-30 fixed text-2xl top-0 left-0 w-full h-screen  bg-[#232323] ease-in-out duration-500 " : "z-100 w-full h-screen  bg-[#232323] fixed text-2xl top-0 left-[-100%] ease-in-out duration-500 opacity-0 "}>
+          <div className={navBar ? "z-30 fixed text-2xl top-0 left-0 w-full h-screen bg-[#1e1e1e] ease-in-out duration-500 " : "z-100 w-full h-screen  bg-[#1e1e1e] fixed text-2xl top-0 left-[-100%] ease-in-out duration-500 opacity-0 "}>
               <div className=" flex flex-col p-5 gap-4 items-center justify-center">
                 <Link onClick={handleNavClose} href={'/'} className=' hover:text-orange-500' >Home</Link>
                 <Link onClick={handleNavClose} href={'/portfolio'} className=' hover:text-orange-500' >Portfolio</Link>

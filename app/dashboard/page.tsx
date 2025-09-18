@@ -1,69 +1,81 @@
 "use client"
 
-import { div } from "framer-motion/client"
 import Link from "next/link"
 import { useState } from "react"
 import { IoSettingsOutline } from "react-icons/io5"
+import Programs from "./programs/Programs"
+import Overview from "./overview/page"
+import DashboardSidebar from "./DashboardSidebar"
+import avater from '../../public/assets/Character.png'
+import nigeria from '../../public/assets/nigeria.png'
+import Image from "next/image"
+
 
 export default function dashboard(){
     const [activeTab,setActiveTab] = useState(1)
-    const sideMenuList = [
-        {
-            id: 1,
-            title:'Overview',
-        },
-        {
-            id: 2,
-            title:'User Management'
-        },
-        {
-            id: 3,
-            title:'Programs'
-        },
-        {
-            id: 4,
-            title:'Transactions'
-        },
-    ]
-
-    type sideMenuListItem ={
-        id: number,
-        title:string,
-        onclick: Function
-    }
-
-    const handleActiveTab = (e:number)=>{
-        setActiveTab(e);
-    } 
-
+    
     return(
         <div className="w-full justify-center items-center p-0 m-0 flex flex-col h-screen mt-30">
             {/* dashboard menu */}
-            <div className="container-full w-full p-5 bg-[#0F172A]/40 border-b-1 border-t-1">
-                <h1>Hi, Timmi!</h1>
+            <div className="flex flex-row justify-between items-center w-full p-5 bg-[#1e1e1e]/40 border-b-1 border-t-1 border-[#2f2f2f]">
+                <h1 className="w-full text-bold">Hi, Timmi!</h1>
+                <div className="flex flex-row gap-5 justify-end items-center w-full">
+                    <Image src={nigeria} alt="Nigeria Flag" className="w-10 h-5"/>
+                    <Image src={avater} alt="User Avatar" className="rounded-full w-10 h-10 border border-white" />
+                </div>
             </div>
 
             <main className="flex flex-row items-center justify-center w-full">
                 {/* Left side bar */}
-                <section className="flex flex-col border-r-1 items-center justify-between w-[15%] h-screen bg-[#0F172A]/30">
-                    <div className="flex flex-col items-center justify-start w-full ">
-                        {
-                            sideMenuList.map((item)=>(
-                                <div key={item.id} onClick={()=>handleActiveTab(item.id)} className={`${activeTab === item.id ? 'bg-[#0F172A]' : ''} w-full p-3 flex flex-row justify-start border-b-1 items-center cursor-pointer hover:opacity-[0.3]`}>
-                                    <span className="flex flex-row gap-2 text-xs justify-start items-center"> <IoSettingsOutline size={15} color="white" /> {item.title}</span>
-                                </div>
-                            ))
-                        }
-                    </div>
-
-                    <div className="flex flex-row items-center border-t-1 border-b-1 w-full p-3 justify-start bg-rgba(16, 48, 20, 0.64)">
-                        <Link href={'#'}><span className="flex flex-row gap-2 text-sm justify-start items-center"> <IoSettingsOutline size={20} color="white" /> Logout User</span></Link>
-                    </div>
-                </section>
-
+                <DashboardSidebar onTabChange={setActiveTab} />
                 {/* Content body */}
-                <section className="flex p-10 flex-row items-center h-screen bg-[#0F172A]/20 justify-start w-[85%]">
-                    <h1>Main body here</h1>
+                <section className="flex p-10 flex-row h-screen bg-[#1e1e1e]/40 justify-start max-w-7xl w-full gap-10">
+                    <div className="w-full flex flex-row gap-5 justify-start">
+                                {/* Add Program */}
+                                {
+                        
+                                    activeTab === 1 ? (
+                                        <>
+                                            {/* overview here */}
+                                            <Overview />
+                                        </>
+                                    ) : activeTab === 2 ? (
+                                        <>
+                                            <h1>Clients</h1>
+                                        </>
+                                    ) : activeTab === 3 ? (
+                                        <>
+                                            <h1>Services</h1>
+
+                                        </>
+                                    ) : activeTab === 4 ? (
+                                        <>
+                                            <h1>Transactions</h1>
+
+                                        </>
+                                    ) : activeTab === 5 ? (
+                                        <>
+                                            <h1>Orders</h1>
+
+                                        </>
+                                    ) : activeTab === 6 ? (
+                                        <>
+                                            <h1>Messages</h1>
+
+                                        </>
+                                    ) : activeTab === 7 ? (
+                                        <>
+                                            <h1>Notifications</h1>
+
+                                        </>
+                                    ) : (
+                                        <>
+                                            <h1>Help</h1>
+                                        </>
+                                    ) 
+                                }
+                    </div>
+                    
                 </section>
             </main>
 
