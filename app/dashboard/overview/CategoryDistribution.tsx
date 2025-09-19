@@ -24,8 +24,6 @@ const CategoryDistribution = () => {
                     dataKey={'value'}
                     labelLine={false}
                     outerRadius={80}
-                    
-                    // label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
                 >
                     {categoryData?.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
