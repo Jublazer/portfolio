@@ -6,6 +6,7 @@ import { GrOrderedList } from 'react-icons/gr'
 import { RiServiceFill } from 'react-icons/ri'
 import { motion } from 'framer-motion'
 import ServicesChart from './ServicesChart'
+import CategoryDistribution from './CategoryDistribution'
 const Overview = () => {
   return (
     <div className='w-full flex-1 overflow-auto relative z-10'>
@@ -21,9 +22,14 @@ const Overview = () => {
                         <StatCard name={'Orders'} icon={GrOrderedList} value={'60,000+'}  />
                 </motion.div>
 
-                <div className='grid sm:grid-cols-1 lg:grid-cols-2 mb-4'>
+                <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{opacity: 1, y:0}}
+                    transition={{ duration: 0.5 }}
+                className='grid sm:grid-cols-1 lg:grid-cols-2 mb-4 gap-5'>
                     <ServicesChart />
-                </div>
+                    <CategoryDistribution />
+                </motion.div>
             </main>
     </div>
   )

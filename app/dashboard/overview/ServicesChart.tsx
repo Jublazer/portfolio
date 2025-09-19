@@ -19,11 +19,11 @@ useEffect(() => {
     //   .then(res => res.json())
     //   .then(data => setData(data[0]))
     //   .catch(err => console.error('Error fetching data:', err));
-    setData(salesData.slice(0,5));
+    setData(salesData.slice(0,10));
 },[])
   return (
-    <div className=' bg-[#2f2f2f] p-5 backdrop-blur-md rounded-lg'>
-        <h2>Services Chart</h2>
+    <div className='bg-[#2f2f2f]  p-4 backdrop-blur-md rounded-lg flex flex-col justify-center items-center gap-5 '>
+        <h2 className='text-xl font-bold'>Services Chart</h2>
         <ResponsiveContainer width={'100%'} height={300}>
             <LineChart data={data}>
                 <CartesianGrid strokeDasharray={'3 4'} stroke='#4b5563' />
@@ -61,7 +61,8 @@ useEffect(() => {
                         return null;
                     }}
                 />
-                <Line type="monotone" dataKey={'amountUSD'} stroke="#ff0077ff" strokeWidth={3} />
+                <Line type="monotone" dot={{fill: '#ff0077ff', strokeWidth: 2, r: 4, }} activeDot={{r:6, strokeWidth:2}} dataKey={'amountUSD'} stroke="#ff0077ff" strokeWidth={3} />
+
             </LineChart>
         </ResponsiveContainer>
     </div>

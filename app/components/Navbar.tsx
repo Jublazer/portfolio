@@ -61,6 +61,7 @@ const handleNavClose = ()=>{
                 <Link onClick={handleNavClose} href={'/portfolio'} className=' hover:text-orange-500' >Portfolio</Link>
                 <Link onClick={handleNavClose} href={'/about'} className=' hover:text-orange-500' >About</Link>
                 <Link onClick={handleNavClose} href={'/contact'} className=' hover:text-orange-500' >Contact</Link>
+                <Link onClick={handleNavClose} href={'/dashboard'} className=' hover:text-orange-500' >Dashboard</Link>
               </div>
 
           </div>

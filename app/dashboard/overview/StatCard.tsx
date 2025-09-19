@@ -11,7 +11,7 @@ type StatCardProps = {
 
 const StatCard: React.FC<StatCardProps> = ({ name, icon: Icon, value }) => {
   return (
-    <div className='w-full p-y-5 p-x-5'>
+    <div className='w-full mx-auto'>
         <motion.div className='bg-[#2f2f2f] rounded-lg p-5 flex flex-col justify-center items-start gap-3'
             whileHover={{y: -5, boxShadow: '0px 10px 20px rgba(0, 0, 0, 0.2)'}}
             >
