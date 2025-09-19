@@ -45,6 +45,7 @@ const handleNavClose = ()=>{
             <Link href={'/portfolio'} className=' hover:text-orange-500' >Portfolio</Link>
             <Link href={'/about'} className=' hover:text-orange-500' >About</Link>
             <Link href={'/contact'} className=' hover:text-orange-500' >Contact</Link>
+            <Link href={'/dashboard'} className=' hover:text-orange-500' >Dashboard</Link>
         </div>
 
         <div className='md:hidden z-100' onClick={toggleNav}>
