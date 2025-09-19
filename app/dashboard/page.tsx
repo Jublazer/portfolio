@@ -1,9 +1,6 @@
 "use client"
 
-import Link from "next/link"
 import { useState } from "react"
-import { IoSettingsOutline } from "react-icons/io5"
-import Programs from "./programs/Programs"
 import Overview from "./overview/page"
 import DashboardSidebar from "./DashboardSidebar"
 import avater from '../../public/assets/Character.png'
