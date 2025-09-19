@@ -1,6 +1,5 @@
-"use state"
+"use client"
 
-import { ChartArea } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { salesData } from './data';
