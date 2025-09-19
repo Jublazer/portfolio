@@ -1,3 +1,5 @@
+"use client"
+
 import { DollarSign, Users } from 'lucide-react'
 import React from 'react'
 import { TbCurrencyNaira } from 'react-icons/tb'
