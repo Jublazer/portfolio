@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 import { IoAddCircle } from 'react-icons/io5'
 
-function AddProgram({onAddProgram}:any) {
+type AddProgramProps = {
+  onAddProgram: (program: string) => void;
+};
+
+function AddProgram({ onAddProgram }: AddProgramProps) {
     const [progs, setProgs] = useState('')
   return (
     <div className='w-[400px] bg-gray-400/10 rounded-lg border flex flex-col gap-3 p-5 justify-center items-center h-[200px]'>

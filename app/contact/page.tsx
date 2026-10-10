@@ -1,160 +1,93 @@
-"use client"
+import type { Metadata } from 'next';
+import { Mail, Phone, MapPin, Clock } from 'lucide-react';
+import { Section } from '../components/ui/Section';
+import { Badge } from '../components/ui/atoms';
+import { PageHero } from '../components/ui/PageHero';
+import { CONTACT } from '@/data/constants';
+import { ContactForm } from './ContactForm';
 
-import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom/client";
+export const metadata: Metadata = {
+  title: 'Contact',
+  description:
+    'Start a project with Timmitech. Tell us what you are building and we will get back to you within one business day.',
+};
 
-function ContactForm() {
-  // Replace with your actual Getform endpoint
-  const GETFORM_ENDPOINT = "https://formsubmit.co/2e17edefe1a54ac395473d40fea26166";
+const details = [
+  { icon: Mail, label: 'Email', value: CONTACT.email, href: `mailto:${CONTACT.email}` },
+  {
+    icon: Phone,
+    label: 'Phone',
+    value: CONTACT.phone,
+    href: `tel:${CONTACT.phone.replace(/[^+\d]/g, '')}`,
+  },
+  { icon: MapPin, label: 'Studio', value: CONTACT.address },
+  { icon: Clock, label: 'Hours', value: CONTACT.hours },
+];
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
-
-  const [formStatus, setFormStatus] = useState<{
-    submitted: boolean;
-    submitting: boolean;
-    error: string | null;
-  }>({
-    submitted: false,
-    submitting: false,
-    error: null
-  });
-
-  const handleChange = (e: { target: { name: any; value: any; }; }) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = async (e: { preventDefault: () => void; currentTarget: HTMLFormElement | undefined; }) => {
-    e.preventDefault();
-    setFormStatus({ submitted: false, submitting: true, error: null });
-
-    try {
-      const response = await fetch(GETFORM_ENDPOINT, {
-        method: "POST",
-        body: new FormData(e.currentTarget),
-        headers: {
-          Accept: "application/json"
-        }
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      setFormStatus({ submitted: true, submitting: false, error: null });
-      setFormData({ name: "", email: "", message: "" });
-
-      // Reset form after 5 seconds
-      setTimeout(() => {
-        setFormStatus({ submitted: false, submitting: false, error: null });
-      }, 5000);
-    } catch (error) {
-      setFormStatus({
-        submitted: false,
-        submitting: false,
-        error: error instanceof Error ? error.message : "Something went wrong"
-      });
-    }
-  };
-
+export default function ContactPage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-4 md:p-24 mt-15 bg-black">
-      <div className="w-full glass max-w-md mx-auto p-6 bg-black rounded-lg shadow-lg border border-gray-800">
-        <h2 className="text-2xl font-bold mb-6 text-center text-white">
-          Contact Us
-        </h2>
+    <>
+      <PageHero
+        eyebrow="Contact"
+        title="Let’s build something considered"
+        intro="Tell us about your project, your timeline, and what success looks like. We reply to every serious enquiry within one business day."
+      />
 
-        {formStatus.submitted && (
-          <div className="mb-4 p-4 bg-gray-900 text-white border border-gray-700 rounded-md">
-            <p>Thank you! Your message has been submitted successfully.</p>
-          </div>
-        )}
+      <Section>
+        <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr]">
+          {/* Form */}
+          <ContactForm />
 
-        {formStatus.error && (
-          <div className="mb-4 p-4 bg-gray-900 text-white border border-gray-700 rounded-md">
-            <p>{formStatus.error}</p>
-          </div>
-        )}
-
-        <form method="POST" action={"https://formsubmit.co/2e17edefe1a54ac395473d40fea26166"} onSubmit={handleSubmit}>
-          <div className="space-y-4">
-            <div className="space-y-2">
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-gray-300"
-              >
-                Name
-              </label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Your name"
-                required
-                className="w-full px-3 py-2 bg-gray-900 border border-gray-700 text-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-white focus:border-white placeholder-gray-500"
-              />
+          {/* Details */}
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-4 rounded-2xl border border-line bg-surface p-6">
+              <Badge tone="accent">Direct</Badge>
+              <ul className="flex flex-col gap-5">
+                {details.map(({ icon: Icon, label, value, href }) => (
+                  <li key={label} className="flex items-start gap-3">
+                    <span className="inline-flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-accent/10 text-accent">
+                      <Icon className="h-4 w-4" />
+                    </span>
+                    <div className="flex flex-col">
+                      <span className="text-xs font-semibold uppercase tracking-[0.15em] text-faint">
+                        {label}
+                      </span>
+                      {href ? (
+                        <a
+                          href={href}
+                          className="text-sm font-medium text-ink transition-colors hover:text-accent"
+                        >
+                          {value}
+                        </a>
+                      ) : (
+                        <span className="text-sm font-medium text-ink">{value}</span>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <div className="space-y-2">
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-300"
-              >
-                Email
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="your.email@example.com"
-                required
-                className="w-full px-3 py-2 bg-gray-900 border border-gray-700 text-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-white focus:border-white placeholder-gray-500"
-              />
+            <div className="rounded-2xl border border-line bg-bg-soft p-6">
+              <h2 className="text-base font-semibold text-ink">What happens next</h2>
+              <ol className="mt-4 flex flex-col gap-3 text-sm text-muted">
+                <li className="flex gap-3">
+                  <span className="font-bold text-accent">1.</span> We read your brief and reply
+                  within one business day.
+                </li>
+                <li className="flex gap-3">
+                  <span className="font-bold text-accent">2.</span> A short call to align on scope,
+                  timeline, and budget.
+                </li>
+                <li className="flex gap-3">
+                  <span className="font-bold text-accent">3.</span> You receive a written proposal
+                  with milestones and pricing.
+                </li>
+              </ol>
             </div>
-
-            <div className="space-y-2">
-              <label
-                htmlFor="message"
-                className="block text-sm font-medium text-gray-300"
-              >
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="Your message here..."
-                rows={4}
-                required
-                className="w-full px-3 py-2 bg-gray-900 border border-gray-700 text-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-white focus:border-white placeholder-gray-500"
-              />
-            </div>
-
-            <input type="hidden" name="_captcha" value="true" />
-            <input type="hidden" name="_subject" value="New Email from Your Website"></input>
-
-            <button
-              type="submit"
-              disabled={formStatus.submitting}
-              className="w-full px-4 py-2 text-black bg-white rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-            >
-              {formStatus.submitting ? "Submitting..." : "Send Message"}
-            </button>
           </div>
-        </form>
-      </div>
-    </main>
+        </div>
+      </Section>
+    </>
   );
 }
-export default ContactForm;

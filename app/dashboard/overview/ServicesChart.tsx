@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react'
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { salesData } from './data';
 
+type SaleEntry = (typeof salesData)[number];
+
 const ServicesChart = () => {
 //   useEffect(() => {
 //     fetch('http://localhost:4000/api/smartsheet')
@@ -11,7 +13,7 @@ const ServicesChart = () => {
 //       .then(data => console.log(data))
 //   }, [])
 
-const [data, setData] = useState<any>();
+const [data, setData] = useState<SaleEntry[]>([]);
 
 useEffect(() => {
     // fetch('/data.ts')

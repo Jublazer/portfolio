@@ -8,7 +8,7 @@ import nigeria from '../../public/assets/nigeria.png'
 import Image from "next/image"
 
 
-export default function dashboard(){
+export default function Dashboard(){
     const [activeTab,setActiveTab] = useState(1)
     
     return(

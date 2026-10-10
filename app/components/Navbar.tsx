@@ -1,74 +1,113 @@
-"use client"
+'use client';
 
-import React, { useState } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import logo from '../../public/assets/TimmiLogo.png'
-import Dock from './gsap/DockMenu'
-import { VscHome, VscArchive, VscAccount, VscSettingsGear } from "react-icons/vsc";
-import { GlassDiv } from './GlassDiv'
-import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai'
+import { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import { Menu, X, ArrowRight } from 'lucide-react';
+import { NAV_LINKS, BRAND } from '@/data/constants';
+import { useScrollHeader } from './ui/hooks';
+import logo from '../../public/assets/TimmiLogoYellow.png';
 
-function Navbar() {
-    const [navBar, setNavBar] = useState(false)
-    const items = [
-    { icon: <VscHome size={18} />, label: 'Home', onClick: () => alert('Home!') },
-    { icon: <VscArchive size={18} />, label: 'Archive', onClick: () => alert('Archive!') },
-    { icon: <VscAccount size={18} />, label: 'Profile', onClick: () => alert('Profile!') },
-    { icon: <VscSettingsGear size={18} />, label: 'Settings', onClick: () => alert('Settings!') },
-  ];
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+  const scrolled = useScrollHeader(24);
+  const pathname = usePathname();
 
-  const toggleNav = ()=>{
-    setNavBar(!navBar);
-  }
-
-const handleNavClose = ()=>{
-  setNavBar(false)
-}
+  const isActive = (href: string) =>
+    href === '/' ? pathname === '/' : pathname.startsWith(href);
 
   return (
-    <div className=' fixed z-500 top-0 left-0 w-full justify-center items-center' >
-      <div className='flex items-center justify-around max-h-[500px] backdrop-blur-lg md:max-w-[1300px] mt-2  p-2 gap-5 bg-white/10 mx-auto rounded-lg shadow-lg border border-[#2f2f2f] border-opacity-10 '>  
-        <div className='flex item-center justify-start'>
-            <Image
-                src={logo}
-                width={35}
-                height={35}
-                alt='logo'
-                className='rounded-full border-transparent border-solid'
-            />
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        scrolled
+          ? 'border-b border-line bg-bg/80 backdrop-blur-xl'
+          : 'border-b border-transparent bg-transparent'
+      }`}
+    >
+      <nav className="container-px mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4">
+        {/* Brand */}
+        <Link
+          href="/"
+          className="flex items-center gap-2.5"
+          onClick={() => setOpen(false)}
+          aria-label={`${BRAND.name} home`}
+        >
+          <Image src={logo} width={32} height={32} alt={`${BRAND.name} logo`} priority />
+          <span className="text-base font-bold tracking-tight text-ink">{BRAND.name}</span>
+        </Link>
+
+        {/* Desktop links */}
+        <ul className="hidden items-center gap-1 md:flex">
+          {NAV_LINKS.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className={`rounded-full px-3.5 py-2 text-sm font-medium transition-colors ${
+                  isActive(link.href) ? 'text-accent' : 'text-muted hover:text-ink'
+                }`}
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        {/* Desktop CTA */}
+        <div className="hidden md:block">
+          <Link href="/contact" className="button button--primary px-5 py-2 text-sm">
+            Start a project
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
 
-        {/* MD version Navbar */}
-        <div className='w-full hidden md:flex flex-row items-center justify-end md:pr-5 lg:pr-5 gap-5'>
-            <Link href={'/'} className='  hover:text-orange-500' >Home</Link>
-            <Link href={'/portfolio'} className=' hover:text-orange-500' >Portfolio</Link>
-            <Link href={'/about'} className=' hover:text-orange-500' >About</Link>
-            <Link href={'/contact'} className=' hover:text-orange-500' >Contact</Link>
-            <Link href={'/dashboard'} className=' hover:text-orange-500' >Dashboard</Link>
-        </div>
+        {/* Mobile toggle */}
+        <button
+          type="button"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-line text-ink md:hidden"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
+        >
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+      </nav>
 
-        <div className='md:hidden z-100' onClick={toggleNav}>
-          {
-            navBar ? <AiOutlineClose size={30} /> : <AiOutlineMenu size={30} />
-            
-          } 
-        </div>
-
-        {/* Mobile version Navbar */}
-          <div className={navBar ? "z-30 fixed text-2xl top-0 left-0 w-full h-screen bg-[#1e1e1e] ease-in-out duration-500 " : "z-100 w-full h-screen  bg-[#1e1e1e] fixed text-2xl top-0 left-[-100%] ease-in-out duration-500 opacity-0 "}>
-              <div className=" flex flex-col p-5 gap-4 items-center justify-center">
-                <Link onClick={handleNavClose} href={'/'} className=' hover:text-orange-500' >Home</Link>
-                <Link onClick={handleNavClose} href={'/portfolio'} className=' hover:text-orange-500' >Portfolio</Link>
-                <Link onClick={handleNavClose} href={'/about'} className=' hover:text-orange-500' >About</Link>
-                <Link onClick={handleNavClose} href={'/contact'} className=' hover:text-orange-500' >Contact</Link>
-                <Link onClick={handleNavClose} href={'/dashboard'} className=' hover:text-orange-500' >Dashboard</Link>
-              </div>
-
-          </div>
-        </div>
-    </div>
-  )
+      {/* Mobile panel */}
+      <div
+        className={`overflow-hidden border-line bg-bg/95 backdrop-blur-xl transition-[max-height,opacity] duration-300 md:hidden ${
+          open ? 'max-h-[80vh] border-b opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <ul className="container-px flex flex-col gap-1 py-4">
+          {NAV_LINKS.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className={`flex items-center justify-between rounded-xl px-4 py-3 text-base font-medium transition-colors ${
+                  isActive(link.href)
+                    ? 'bg-surface-2 text-accent'
+                    : 'text-muted hover:bg-surface-2 hover:text-ink'
+                }`}
+              >
+                {link.label}
+                <ArrowRight className="h-4 w-4 opacity-40" />
+              </Link>
+            </li>
+          ))}
+          <li className="pt-2">
+            <Link
+              href="/contact"
+              onClick={() => setOpen(false)}
+              className="button button--primary w-full"
+            >
+              Start a project
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </header>
+  );
 }
-
-export default Navbar

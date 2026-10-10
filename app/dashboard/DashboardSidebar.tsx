@@ -68,12 +68,6 @@ const DashboardSidebar: React.FC<SidebarProps> = ({ onTabChange }) => {
         },
     ]
 
-    type sideMenuListItem ={
-        id: number,
-        title:string,
-        onclick: Function
-    }
-
     const handleActiveTab = (e:number)=>{
         setActiveTab(e);
     } 

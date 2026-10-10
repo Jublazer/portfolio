@@ -1,75 +1,71 @@
-"use client"
+import Link from 'next/link';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { Container, Badge, Bullet } from './ui/atoms';
+import { BRAND, HERO_CARD_SECTIONS } from '@/data/constants';
 
-import character from '../../public/assets/Character.png'
-import { TypeAnimation } from 'react-type-animation'
-import { useRef } from "react"
-import { Particles } from "./ui/Particles"
-import Image from 'next/image'
-import Link from 'next/link'
-import StarBorder from './gsap/StarBorderButton'
+export function Hero() {
+  return (
+    <section className="relative overflow-hidden">
+      {/* Ambient accent glow */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute left-1/2 top-[-12rem] h-[32rem] w-[52rem] -translate-x-1/2 rounded-full bg-accent/10 blur-[120px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(244,192,37,0.08),transparent_60%)]" />
+      </div>
 
-export const Hero = ()=>{
-    const parallaxRef = useRef<HTMLDivElement>(null)
-    return(
-        <div className='overflow-x-clip relative mt-10 w-full min-h-[300px] pt-12 flex items-center justify-center gap-6'>
-            <div className='container mx-auto space-y-6 flex flex-col justify-center items-center' ref={parallaxRef}>
-                <Image 
-                    src={character}
-                    alt='Character'
-                    className='mx-auto '
-                    width={350}
-                />
-                <div className="w-full rounded-lg shadow-lg absolute mx-auto space-y-6 h-100 top-90 bg-gradient-to-t from-[#131212ff]  to-transparent">
-                    
-                    <div className='flex items-center justify-center flex-col space-y-2'>
+      <Container>
+        <div className="flex flex-col items-center gap-6 py-20 text-center sm:py-28">
+          <Badge tone="accent">{BRAND.tagline}</Badge>
 
-                            <h1 className='font-extrabold text-center font-semibold text-orange-200 text-7xl'>Lets create</h1>
-                            <TypeAnimation 
-                                sequence={[
-                                    "Experience", 1000,
-                                    "Apps", 1000,
-                                    "Websites", 1000,
-                                    "UI/UX designs", 1000,
-                                    "Business/Tech Coaching", 1000,
-                                    "Branding", 1000,
-                                ]}
-                                className='md:text-5xl text-3xl  text-orange-500 inline-block'
-                                wrapper='h1'
-                                cursor={true}
-                                repeat={Infinity}
-                            />
-                            <p className='text-orange-100 md:text-sm text-[0.8rem] text-center font-regular max-w-[700px] '>My name is Timothy Jonah, I am a fullstack developer with 5+years experience.</p>
+          <h1 className="max-w-4xl text-balance text-4xl font-extrabold leading-[1.05] tracking-tight text-ink sm:text-6xl md:text-7xl">
+            Let&apos;s create{" "}
+            <span className="bg-gradient-to-r from-accent to-accent-strong bg-clip-text text-transparent">
+              digital experiences
+            </span>{" "}
+            that hold attention.
+          </h1>
 
-                            <br />
-        
-                            <div className="flex justify-center items-center gap-10">
-                            <Link href={'/projects'}>
-                                <StarBorder
-                                    as="button"
-                                    className="custom-class cursor-pointer"
-                                    color="orange"
-                                    speed="5s"
-                                    >
-                                    View My Works
-                                </StarBorder>
-                                </Link>
+          <p className="max-w-2xl text-pretty text-base leading-relaxed text-muted sm:text-lg">
+            I&apos;m {BRAND.name} — a technology and creative studio building web and mobile
+            products, design systems, and brand identities engineered for speed, accessibility,
+            and visual discipline.
+          </p>
 
-                            <Link href={'/contact'}>
-                                <StarBorder
-                                    as="button"
-                                    className="custom-class cursor-pointer"
-                                    color="cyan"
-                                    speed="5s"
-                                    >
-                                    Work with me
-                                </StarBorder>
-                                </Link>
-                            </div>
-                    </div>
-                </div>
-                <Particles parallaxRef={parallaxRef} />
-            </div>
-                
+          <div className="flex flex-col items-center gap-3 sm:flex-row">
+            <Link href="/projects" className="button button--primary">
+              View my work
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link href="/contact" className="button button--ghost">
+              Work with me
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          {/* Discipline cards */}
+          <div className="mt-10 grid w-full gap-4 text-left md:grid-cols-3">
+            {HERO_CARD_SECTIONS.map((section, i) => (
+              <div
+                key={section.title}
+                className="flex flex-col gap-4 rounded-2xl border border-line bg-surface p-6 transition-colors hover:border-accent/50"
+              >
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <h3 className="text-xl font-semibold text-ink">{section.title}</h3>
+                <p className="text-sm font-medium text-muted">{section.body}</p>
+                <p className="text-sm leading-relaxed text-faint">{section.detail}</p>
+                <ul className="mt-auto flex flex-col gap-2 pt-3">
+                  {section.indicators.map((ind) => (
+                    <Bullet key={ind}>{ind}</Bullet>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
-    )
+      </Container>
+    </section>
+  );
 }
+
+export default Hero;
