@@ -72,9 +72,9 @@ export const ASSET = {
 };
 
 export const CONTACT = {
-  email: 'hello@timmitech.co',
-  phone: '+234 812 3456 789',
-  address: '14, Ahmadu Bello Way, Victoria Island, Lagos, Nigeria',
+  email: 'info@timmitech.com',
+  phone: '+234 701 9207 099',
+  address: 'Suite 12EE, Zone E Legislative Quarters, Apo, Abuja, Nigeria',
   hours: 'Mon - Fri, 09:00 - 18:00 WAT',
 };
 
